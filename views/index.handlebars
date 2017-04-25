@@ -10,7 +10,7 @@
 
                 <form action="/{{this.id}}?_method=PUT" method="POST">
                     <input type="hidden" name="devoured" value="true">
-                    <button type="submit">Devour!</button>
+                    <button type="submit" class="btn btn-default">Devour!</button>
                 </form>
             </li>
         {{/unless}}
@@ -24,7 +24,7 @@
         <lable for="bn">Burger Name:</lable>
         <input type="text" id="bn" name="burger_name">
     </div>
-    <button type="submit">Add burger</button>
+    <button type="submit" class="btn btn-success">Add burger</button>
 </form>
 
 <h2>Burgers I've eaten!</h2>
@@ -33,9 +33,11 @@
     {{#each burger}}
         {{#if this.devoured}}
             <li>
-                {{this.name}}
+                {{this.burger_name}}
+                <form action="/{{this.id}}?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete Burger</button>
+                </form>
 
-                {{> burgers/delete-burger}}
             </li>
         {{/if}}
     {{/each}}
